@@ -1,50 +1,59 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
-#include <vector>
+
 using namespace std;
 
-class Item {
-public:
+struct Item {
     int numero;
     string nome;
     double precoCompra;
     double precoVenda;
-    double lucro;
-    int quantidade;
+    int quantidadeEstoque;
     int quantidadeComprar;
-
-    Item(int num, string n, double pc, double pv, int q) {
-        numero = num;
-        nome = n;
-        precoCompra = pc;
-        precoVenda = pv;
-        lucro = pv - pc;
-        quantidade = q;
-        quantidadeComprar = 0;
-    }
+    int totalVendas;
+    bool reporEstoque;
 };
 
-int main() {
-    vector<Item> estoque;
-
-    // Adicionando os itens ao estoque
-    estoque.push_back(Item(1, "Caneta", 0.25, 0.90, 130));
-    estoque.push_back(Item(2, "Caderno", 2.00, 10.00, 50));
-    estoque.push_back(Item(3, "Lápis", 0.25, 0.50, 150));
-    estoque.push_back(Item(4, "Borracha", 0.30, 0.60, 80));
-    estoque.push_back(Item(5, "Régua", 1.00, 1.50, 70));
-
-    // Exibindo os itens do estoque
-    cout << "Estoque atual:\n";
-    for (const auto& item : estoque) {
-        cout << "Número do item: " << item.numero << endl;
-        cout << "Nome do item: " << item.nome << endl;
-        cout << "Preço de compra: " << item.precoCompra << endl;
-        cout << "Preço de venda: " << item.precoVenda << endl;
-        cout << "Lucro: " << item.lucro << endl;
-        cout << "Quantidade em estoque: " << item.quantidade << endl;
-        cout << "--------------------------\n";
+void imprimirTabela(Item itens[], int tamanho) {
+    cout << "-------------------------------------------------------------------------------------------------------" << endl;
+    cout << "| Numero |          Papelaria           | Preço Compra | Preço Venda | Stock | Compras | Vendas| Repor |" << endl;
+    cout << "-------------------------------------------------------------------------------------------------------" << endl;
+    
+    double lucroTotal = 0;
+    
+    for (int i = 0; i < tamanho; ++i) {
+        double lucroItem = (itens[i].precoVenda - itens[i].precoCompra) * itens[i].totalVendas;
+        lucroTotal += lucroItem;
+        
+        itens[i].reporEstoque = (itens[i].quantidadeEstoque < 80);
+        
+        cout << "|   " << setw(2) << itens[i].numero << "    |  " << setw(28) << left << itens[i].nome 
+             << "| " << setw(12) << fixed << setprecision(2) << itens[i].precoCompra 
+             << "| " << setw(11) << fixed << setprecision(2) << itens[i].precoVenda        
+             << "| " << setw(7) << itens[i].quantidadeEstoque
+             << " | " << setw(7) << itens[i].quantidadeComprar
+             << " | " << setw(6) << itens[i].totalVendas
+             << " | " << (itens[i].reporEstoque ? "Sim" : "Não")
+             << "  |" << endl;
     }
+    
+    cout << "-------------------------------------------------------------------------------------------------------" << endl;
+    cout << "Lucro Total: €" << lucroTotal << endl;
+}
+
+int main() {
+    const int tamanho = 5;
+    Item itens[tamanho] = {
+        {1, "Caderno", 1.5, 2.5, 100, 65, 150},
+        {2, "Caneta", 0.5, 0.75, 150, 40, 200},
+        {3, "Afia", 1.0, 1.50, 50, 170, 100},
+        {4, "Borracha", 0.45, 0.75, 3, 250, 120},
+        {5, "Lápis", 0.25, 0.75, 75, 40, 80}
+    };
+
+    imprimirTabela(itens, tamanho);
 
     return 0;
 }
+
