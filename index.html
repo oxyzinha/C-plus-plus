@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Definição e utilidade das Bibliotecas</h1>
+        <div class="content">
+            <h3>iostream:</h3>
+            <p><strong>Definição:</strong> Esta biblioteca em C++ fornece funcionalidades para entrada e saída padrão. Ela inclui objetos como std::cout e std::cin, que são utilizados para projetar na tela</p>
+            <p><strong>Utilidade:</strong> Essa biblioteca é essencial para interagir com o usuário através da linha de comando. Ela permite que você exiba mensagens, solicite entrada do usuário e lide com a entrada e saída de dados em geral.</p>
+
+            <h3>iomanip:</h3>
+            <p><strong>Definição:</strong> A biblioteca iomanip em C++ fornece funcionalidades para manipulação de entrada/saída, para configurar a formatação da saída.</p>
+            <p><strong>Utilidade:</strong> Ela é útil quando precisamos controlar a formatação da saída, como configurar a precisão dos números com casas décimais, definir larguras de campo, alinhar dados. Isso é útil para mostrar dados de forma organizada e legível.</p>
+
+            <h3>string:</h3>
+            <p><strong>Definição:</strong> Esta biblioteca em C++ fornece funcionalidades para manipulação de strings.</p>
+            <p><strong>Utilidade:</strong> Ela é usada para trabalhar com strings de caracteres em C++.</p>
+
+            <h2>Declaração da estrutura "Item"</h2>
+            <ul>
+                <li>int numero: Representa o número do produto.</li>
+                <li>string nome: Representa o nome do produto.</li>
+                <li>double precoCompra: Representa o preço de compra do produto.</li>
+                <li>double precoVenda: Representa o preço de venda do produto.</li>
+                <li>int quantidadeEstoque: Representa a quantidade disponível em estoque do produto.</li>
+                <li>int quantidadeComprar: Representa a quantidade que precisa ser comprada do item.</li>
+                <li>int totalVendas: Representa o total de vendas do produto.</li>
+                <li>bool reporEstoque: Representa se o produto precisa ser reposto no estoque, indicado por true ou false.</li>
+            </ul>
+
+            <h1>Definição da Função "imprimirTabela"</h1>
+            <div class="function-description">
+                <h2>Essa função recebe dois parâmetros:</h2>
+                <p><strong>Item itens[]:</strong> Um array de itens de papelaria. Cada elemento do array é do tipo Item, que é uma estrutura definida pelo usuário, contendo os detalhes de um item de papelaria.</p>
+                <p><strong>int tamanho:</strong> O tamanho do array de itens, indicando quantos itens estão presentes no array.</p>
+                <p>Esta função imprime uma tabela bonita com detalhes de cada item de papelaria.</p>
+                <h2>Para cada item na lista:</h2>
+                <p>Calculamos o lucro do item multiplicando a diferença entre o preço de venda e o preço de compra pela quantidade total vendida.</p>
+                <p>Verificamos se a quantidade em estoque é inferior a 80 e marcamos o campo reporEstoque como verdadeiro ou falso.</p>
+                <p>Imprimimos os detalhes do item, incluindo o número, nome, preço de compra, preço de venda, quantidade em estoque, quantidade a comprar, total de vendas e se o item precisa ser reposto no estoque.</p>
+            </div>
+
+            <h2>Função main:</h2>
+            <p>Esta é a função principal do programa.</p>
+            <p>Criamos uma matriz de itens de papelaria, cada um com detalhes predefinidos, como número, nome, preço de compra, preço de venda, quantidade em estoque, quantidade a comprar e total de vendas.</p>
+            <p>Chamamos a função imprimirTabela passando a matriz de itens e o tamanho como argumentos.</p>
+        </div>
+    </div>
+</body>
+</html>
