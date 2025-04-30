@@ -1,0 +1,12 @@
+say "What is your name?"
+wait for the user to type something, and call it user_name
+say "Hello, " user_name
+
+say "How old are you?"
+wait for the user to type something, and call it user_age
+when user_age < 18:
+    say "You are a minor."
+otherwise:
+    say "You are an adult."
+
+say "You are minor."
